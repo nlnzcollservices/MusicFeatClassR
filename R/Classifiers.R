@@ -26,7 +26,8 @@ train_classifier <-
   function(feature_data,
            target_variable,
            classif,
-           train_percentage = 0.7) {
+           train_percentage = 0.7,
+           save_trained_model=TRUE) {
     if (!is.data.frame(feature_data)) {
       stop("Input 'dataframe' must be a data frame.")
     }
@@ -98,12 +99,11 @@ train_classifier <-
       accuracy <- sum(diag(confusion_table)) / sum(confusion_table)
 
 
-
-
       results <- list(
         accuracy = accuracy,
         confusion_matrix = confusion_matrix,
-        trained_model = my_model
+        trained_model = my_model,
+        predictions = predictions
       )
       class(results) <- "train_classifier"
       return(results)

@@ -31,6 +31,8 @@ Imports:
     dplyr,
     purrr,
     testthat
+    testthat,
+    reshape2
 Suggests: 
     knitr,
     rmarkdown,
