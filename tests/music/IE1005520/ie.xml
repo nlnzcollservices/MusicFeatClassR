@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <mets:mets xmlns:mets="http://www.loc.gov/METS/">
+    <mets:dmdSec ID="ie-dmd">
+      <mets:mdWrap MDTYPE="DC">
+        <mets:xmlData>
+          <dc:record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcterms="http://purl.org/dc/terms/">
+            <dc:title>Māoritanga /               by the Maniapoto Voices.</dc:title>
+            <dc:creator>Maniapoto Voices.</dc:creator>
+            <dc:creator>Deller, Hinerangi.</dc:creator>
+            <dc:creator>Bradfield, Johnny.</dc:creator>
+            <dc:creator>Morgan, Chuck,
+    1952-2018.</dc:creator>
+            <dc:creator>Penney, Bert.</dc:creator>
+            <dc:creator>Herewini, William.</dc:creator>
+            <dc:type>Sound Recordings</dc:type>
+            <dc:publisher>Auckland, N.Z. :               Zodiac,</dc:publisher>
+            <dc:date>[1966?]</dc:date>
+            <dc:language>mao</dc:language>
+            <dc:identifier>IE1005520</dc:identifier>
+            <dcterms:bibliographicCitation>Māoritanga</dcterms:bibliographicCitation>
+          </dc:record>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:dmdSec>
+    <mets:amdSec ID="REP74107552-amd">
+      <mets:techMD ID="REP74107552-amd-tech">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+              <section id="internalIdentifier">
+                <record>
+                  <key id="internalIdentifierType">PID</key>
+                  <key id="internalIdentifierValue">REP74107552</key>
+                </record>
+              </section>
+              <section id="objectCharacteristics">
+                <record>
+                  <key id="objectType">REPRESENTATION</key>
+                  <key id="parentID">IE1005520</key>
+                  <key id="creationDate">2021-07-25 17:03:04</key>
+                  <key id="createdBy">SYSTEM_GENERATED</key>
+                  <key id="modificationDate">2021-07-25 17:03:04</key>
+                  <key id="modifiedBy">SYSTEM_GENERATED</key>
+                  <key id="owner">CRS00.INS00.DPR00</key>
+                </record>
+              </section>
+              <section id="generalRepCharacteristics">
+                <record>
+                  <key id="preservationType">DERIVATIVE_COPY</key>
+                  <key id="usageType">VIEW</key>
+                  <key id="derivedFromId">REP1005521</key>
+                  <key id="DigitalOriginal">FALSE</key>
+                  <key id="RepresentationCode">MEDIUM</key>
+                  <key id="TaskID">31430623460</key>
+                </record>
+              </section>
+            </dnx>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:techMD>
+      <mets:rightsMD ID="REP74107552-amd-rights">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:rightsMD>
+      <mets:digiprovMD ID="REP74107552-amd-digiprov">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:digiprovMD>
+    </mets:amdSec>
+    <mets:amdSec ID="FL74107553-amd">
+      <mets:techMD ID="FL74107553-amd-tech">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+              <section id="internalIdentifier">
+                <record>
+                  <key id="internalIdentifierType">PID</key>
+                  <key id="internalIdentifierValue">FL74107553</key>
+                </record>
+              </section>
+              <section id="objectCharacteristics">
+                <record>
+                  <key id="objectType">FILE</key>
+                  <key id="parentID">REP74107552</key>
+                  <key id="creationDate">2021-07-25 17:03:04</key>
+                  <key id="createdBy">SYSTEM_GENERATED</key>
+                  <key id="modificationDate">2021-07-25 17:03:04</key>
+                  <key id="modifiedBy">SYSTEM_GENERATED</key>
+                  <key id="owner">CRS00.INS00.DPR00</key>
+                </record>
+              </section>
+              <section id="generalFileCharacteristics">
+                <record>
+                  <key id="label">/1294987_PM_S_2</key>
+                  <key id="fileMIMEType">audio/mpeg</key>
+                  <key id="fileSizeBytes">24424051</key>
+                  <key id="fileLocationType">FILE</key>
+                  <key id="fileExtension">mp3</key>
+                  <key id="fileModificationDate">2021-07-25 17:02:36</key>
+                </record>
+              </section>
+            </dnx>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:techMD>
+      <mets:rightsMD ID="FL74107553-amd-rights">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:rightsMD>
+      <mets:digiprovMD ID="FL74107553-amd-digiprov">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:digiprovMD>
+    </mets:amdSec>
+    <mets:amdSec ID="FL74107554-amd">
+      <mets:techMD ID="FL74107554-amd-tech">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+              <section id="internalIdentifier">
+                <record>
+                  <key id="internalIdentifierType">PID</key>
+                  <key id="internalIdentifierValue">FL74107554</key>
+                </record>
+              </section>
+              <section id="objectCharacteristics">
+                <record>
+                  <key id="objectType">FILE</key>
+                  <key id="parentID">REP74107552</key>
+                  <key id="creationDate">2021-07-25 17:03:05</key>
+                  <key id="createdBy">SYSTEM_GENERATED</key>
+                  <key id="modificationDate">2021-07-25 17:03:05</key>
+                  <key id="modifiedBy">SYSTEM_GENERATED</key>
+                  <key id="owner">CRS00.INS00.DPR00</key>
+                </record>
+              </section>
+              <section id="generalFileCharacteristics">
+                <record>
+                  <key id="label">/1294987_PM_S_1</key>
+                  <key id="fileMIMEType">audio/mpeg</key>
+                  <key id="fileSizeBytes">21992179</key>
+                  <key id="fileLocationType">FILE</key>
+                  <key id="fileExtension">mp3</key>
+                  <key id="fileModificationDate">2021-07-25 17:03:04</key>
+                </record>
+              </section>
+            </dnx>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:techMD>
+      <mets:rightsMD ID="FL74107554-amd-rights">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:rightsMD>
+      <mets:digiprovMD ID="FL74107554-amd-digiprov">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:digiprovMD>
+    </mets:amdSec>
+    <mets:amdSec ID="ie-amd">
+      <mets:techMD ID="ie-amd-tech">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+              <section id="generalIECharacteristics">
+                <record>
+                  <key id="submissionReason">Preservation_Programme</key>
+                  <key id="IEEntityType">DigitisedSoundIE</key>
+                  <key id="status">ACTIVE</key>
+                  <key id="Version">18</key>
+                </record>
+              </section>
+              <section id="objectCharacteristics">
+                <record>
+                  <key id="objectType">INTELLECTUAL_ENTITY</key>
+                  <key id="creationDate">2009-02-12 11:26:44</key>
+                  <key id="createdBy">officerb</key>
+                  <key id="modificationDate">2023-02-06 07:10:04</key>
+                  <key id="modifiedBy">AlmaProdWorker</key>
+                  <key id="owner">CRS00.INS00.DPR00</key>
+                </record>
+              </section>
+              <section id="internalIdentifier">
+                <record>
+                  <key id="internalIdentifierType">SIPID</key>
+                  <key id="internalIdentifierValue">7472</key>
+                </record>
+                <record>
+                  <key id="internalIdentifierType">PID</key>
+                  <key id="internalIdentifierValue">IE1005520</key>
+                </record>
+                <record>
+                  <key id="internalIdentifierType">DepositSetID</key>
+                  <key id="internalIdentifierValue">7657</key>
+                </record>
+                <record>
+                  <key id="internalIdentifierType">handle</key>
+                  <key id="internalIdentifierValue">1727.10/176858</key>
+                </record>
+              </section>
+              <section id="objectIdentifier">
+                <record>
+                  <key id="objectIdentifierType">ALMAMMS</key>
+                  <key id="objectIdentifierValue">9912949873502836</key>
+                </record>
+                <record>
+                  <key id="objectIdentifierType">ALMAREP</key>
+                  <key id="objectIdentifierValue">32268961960002836</key>
+                </record>
+                <record>
+                  <key id="objectIdentifierType">OAI</key>
+                  <key id="objectIdentifierValue">oai:nlnz.alma.exlibrisgroup.com:32268961960002836</key>
+                </record>
+              </section>
+            </dnx>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:techMD>
+      <mets:rightsMD ID="ie-amd-rights">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+              <section id="accessRightsPolicy">
+                <record>
+                  <key id="policyId">3622342</key>
+                  <key id="policyDescription">Format Shift - Restricted (2 concurrent users)</key>
+                </record>
+              </section>
+            </dnx>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:rightsMD>
+      <mets:digiprovMD ID="ie-amd-digiprov">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+          <mets:xmlData>
+            <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+              <section id="producer">
+                <record>
+                  <key id="address1">Wellington</key>
+                  <key id="defaultLanguage">en_US</key>
+                  <key id="emailAddress">cynthia.wu@natlib.govt.nz</key>
+                  <key id="firstName">NLNZ</key>
+                  <key id="lastName">Internal Digitisation Programmes</key>
+                  <key id="telephone1">04-4743000</key>
+                  <key id="authorativeName">NLNZ Internal Digitisation Programmes</key>
+                  <key id="producerId">80349</key>
+                  <key id="userIdAppId">80345</key>
+                </record>
+              </section>
+              <section id="producerAgent">
+                <record>
+                  <key id="firstName">Bronwyn</key>
+                  <key id="lastName">Officer</key>
+                </record>
+              </section>
+              <section id="event">
+                <record>
+                  <key id="eventDateTime">2013-10-10 18:55:21</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">414</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventOutcomeDetail1">PROCESS_ID=864362599;TASK_ID=62;IE_PID=IE1005520;</key>
+                  <key id="eventDescription">Representation metadata has been updated</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2016-07-12 14:06:13</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">130</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventDescription">Object's Metadata Record Modified</key>
+                  <key id="linkingAgentIdentifierType1">USER</key>
+                  <key id="linkingAgentIdentifierValue1">sajwansu</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2016-08-26 10:53:11</key>
+                  <key id="eventType">VALIDATION</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">191</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventOutcomeDetail1">AR_MID=3622342;DEPOSIT_ACTIVITY_ID=7657;PID=IE1005520;SIP_ID=7472;PRODUCER_ID=80349;TASK_ID=14;PROCESS_ID=30699845850;MF_ID=6;</key>
+                  <key id="eventDescription">Assign AR Policy</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2016-09-06 12:21:00</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">420</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventOutcomeDetail1">IE_PID=IE1005520;CMSMID=345973;MoveToDC=N;CMSrecordId=1294987;CMSsystem=ilsdb;TASK_ID=67;PROCESS_ID=30707467128;</key>
+                  <key id="eventDescription">Unassign CMS</key>
+                  <key id="linkingAgentIdentifierType1">USER</key>
+                  <key id="linkingAgentIdentifierValue1">wuc</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2016-09-13 17:38:15</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">130</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventDescription">Object's Metadata Record Modified</key>
+                  <key id="linkingAgentIdentifierType1">USER</key>
+                  <key id="linkingAgentIdentifierValue1">AlmaProdWorker</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2016-09-14 18:33:34</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">130</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventDescription">Object's Metadata Record Modified</key>
+                  <key id="linkingAgentIdentifierType1">USER</key>
+                  <key id="linkingAgentIdentifierValue1">AlmaProdWorker</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2018-05-27 07:24:56</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">130</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventDescription">Object's Metadata Record Modified</key>
+                  <key id="linkingAgentIdentifierType1">USER</key>
+                  <key id="linkingAgentIdentifierValue1">AlmaProdWorker</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2019-08-24 06:01:10</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">130</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventDescription">Object's Metadata Record Modified</key>
+                  <key id="linkingAgentIdentifierType1">USER</key>
+                  <key id="linkingAgentIdentifierValue1">AlmaProdWorker</key>
+                </record>
+                <record>
+                  <key id="eventDateTime">2023-02-06 07:10:01</key>
+                  <key id="eventType">PROCESSING</key>
+                  <key id="eventIdentifierType">DPS</key>
+                  <key id="eventIdentifierValue">130</key>
+                  <key id="eventOutcome1">SUCCESS</key>
+                  <key id="eventDescription">Object's Metadata Record Modified</key>
+                  <key id="linkingAgentIdentifierType1">USER</key>
+                  <key id="linkingAgentIdentifierValue1">AlmaProdWorker</key>
+                </record>
+              </section>
+            </dnx>
+          </mets:xmlData>
+        </mets:mdWrap>
+      </mets:digiprovMD>
+    </mets:amdSec>
+    <mets:fileSec>
+      <mets:fileGrp ID="REP74107552" ADMID="REP74107552-amd">
+        <mets:file ID="FL74107553" ADMID="FL74107553-amd">
+          <mets:FLocat LOCTYPE="URL" xlin:href="/ndha/dps_export/kempje/export/svetlana/IE1005520/REP74107552/FL74107553_1294987_PM_S_2.mp3" xmlns:xlin="http://www.w3.org/1999/xlink"/>
+        </mets:file>
+        <mets:file ID="FL74107554" ADMID="FL74107554-amd">
+          <mets:FLocat LOCTYPE="URL" xlin:href="/ndha/dps_export/kempje/export/svetlana/IE1005520/REP74107552/FL74107554_1294987_PM_S_1.mp3" xmlns:xlin="http://www.w3.org/1999/xlink"/>
+        </mets:file>
+      </mets:fileGrp>
+    </mets:fileSec>
+    <mets:structMap ID="REP74107552-1" TYPE="Logical">
+      <mets:div LABEL="1294987" ORDER="1">
+        <mets:div LABEL="Side 1" ORDER="1">
+          <mets:div TYPE="FILE" LABEL="/1294987_PM_S_1.wav">
+            <mets:fptr FILEID="FL74107554"/>
+          </mets:div>
+        </mets:div>
+        <mets:div LABEL="Side 2" ORDER="2">
+          <mets:div TYPE="FILE" LABEL="/1294987_PM_S_2.wav">
+            <mets:fptr FILEID="FL74107553"/>
+          </mets:div>
+        </mets:div>
+      </mets:div>
+    </mets:structMap>
+  </mets:mets>

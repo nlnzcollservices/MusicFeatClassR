@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Svetlana Koroteeva" />
+
+<meta name="date" content="2023-10-20" />
+
+<title>Manual</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Manual</h1>
+<h4 class="author">Svetlana Koroteeva</h4>
+<h4 class="date">2023-10-20</h4>
+
+
+
+<div id="musicfeatclassr-package" class="section level1">
+<h1>MusicFeatClassR package</h1>
+<div id="description" class="section level2">
+<h2>Description</h2>
+<p>The MusicFeatClassR package aims to provide an end-to-end solution
+for music genre classification using Machine Learning (ML) techniques.
+The primary problem it addresses is automating the process of music
+genre classification, which involves extracting essential features from
+music datasets and training ML classifiers to predict the genre of
+music.</p>
+<p>The MusicFeatClassR package consists of two main separate parts:
+feature extraction and classification.</p>
+</div>
+<div id="feature-extraction" class="section level2">
+<h2>Feature extraction</h2>
+<p>It also has specific data requirements. The music dataset consists of
+Dissemination Information Packages (DIP) extracted from a Library
+preservation system based on OAIS. Another important file is
+“ies_mms_label.txt,” which contains identification numbers and class
+labels extracted from the library system (Note: Collecting class labels
+from the library system is not yet implemented).</p>
+<p>For preparation, place the music dataset in the “files/mp3” folder
+and the “ies_mms_label.txt” file in the “inst/csv” folder. You can find
+all code examples in the “inst/scripts” folder. Currently, only mp3
+feature extraction is implemented.</p>
+<p>Please note that the example dataset contains only 10 DIP folders. It
+is not sufficient for classification but serves as a test to ensure that
+feature extraction is working.</p>
+<p>To initiate the feature extraction process, you can either run the
+“run_extraction.R” script or copy the following code snippet. This
+script will extract features from the music dataset, extract text
+metadata from “ie.xml” files (inside each DIP), and match them with
+labels from your “mms_ies_label.txt” file. It will create one metadata
+row for each music file, bind them to the main data frame, write the
+data frame to a CSV output file (“extracted_features.csv”), and return
+the data frame. Let’s get started.</p>
+<p>Ensure that you have loaded all the necessary libraries.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(dplyr))</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt;     filter, lag</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(tuneR))</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(data.table))</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;data.table&#39;</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="co">#&gt;     transpose</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="co">#&gt;     between, first, last</span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(reshape2))</span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;reshape2&#39;</span></span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:data.table&#39;:</span></span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="co">#&gt;     dcast, melt</span></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="fu">library</span>(MusicFeatClassR) <span class="co"># the package</span></span></code></pre></div>
+<p>Here, you can customize the names of the output and input files,
+which contain labels. Before running the main pipeline, you should
+specify label_file_path, csv_file_path, and filesdir (for music
+packages).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>csv_file_name<span class="ot">&lt;-</span><span class="st">&quot;extracted_features.csv&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>label_file<span class="ot">&lt;-</span><span class="st">&quot;ies_mms_label.txt&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>vignettes_dir<span class="ot">&lt;-</span><span class="fu">getwd</span>()</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>parent_dir<span class="ot">&lt;-</span><span class="fu">dirname</span>(vignettes_dir)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>csv_files_path<span class="ot">&lt;-</span><span class="fu">file.path</span>(parent_dir, <span class="st">&quot;inst&quot;</span>,<span class="st">&quot;csv&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>csv_file_path<span class="ot">&lt;-</span> <span class="fu">file.path</span>(csv_files_path, csv_file_name)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>label_file_path<span class="ot">&lt;-</span><span class="fu">file.path</span>(csv_files_path, label_file)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>filesdir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(parent_dir,<span class="st">&#39;files&#39;</span>,<span class="st">&#39;mp3&#39;</span>)</span></code></pre></div>
+<p>Now you can initiate the pipeline. The entire process may take a
+couple of hours on the original dataset (please note that the example
+dataset only contains 10 albums). If the process is interrupted, the
+script will pick up from the last processed DIP folder in the next
+run.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>mydata<span class="ot">&lt;-</span><span class="fu">rpipeline</span>(label_file_path, csv_file_path, filesdir)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;IE1005520&quot; &quot;IE1005765&quot; &quot;IE1006254&quot; &quot;IE1010462&quot; &quot;IE1010492&quot; &quot;IE1013111&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;IE1013172&quot; &quot;IE1017243&quot; &quot;IE1017247&quot; &quot;IE1017269&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1005520&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1005765&quot;</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1006254&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1010462&quot;</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1010492&quot;</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1013111&quot;</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1013172&quot;</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1017243&quot;</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1017247&quot;</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE1017269&quot;</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt; [1] &quot;IE number&quot;</span></span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="co">#&gt; [1] &quot;REP74080121&quot;</span></span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/Korotesv/DATA501/MusicFeatClassR/files/mp3/IE1017269/REP74080121/FL74080122_1212219_PM_S_1.mp3&quot;</span></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="co">#&gt; [2] &quot;C:/Users/Korotesv/DATA501/MusicFeatClassR/files/mp3/IE1017269/REP74080121/FL74080125_1212219_PM_S_2.mp3&quot;</span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a><span class="co">#&gt;    duration sample_rate num_channels amplitude</span></span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="co">#&gt; 1:  309.912       48000     14875776     14070</span></span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a><span class="co">#&gt;    duration sample_rate num_channels amplitude</span></span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a><span class="co">#&gt; 1:  309.912       48000     14875776     14070</span></span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a><span class="co">#&gt;   file_type ie_number  rep_number                     file_name</span></span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a><span class="co">#&gt; 1       mp3 IE1017269 REP74080121 FL74080122_1212219_PM_S_1.mp3</span></span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="co">#&gt;           xml_title                        xml_creators         xml_type</span></span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a><span class="co">#&gt; 1 The Kini Quartet. Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a><span class="co">#&gt;                            xml_publisher xml_date xml_language xml_identifier</span></span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a><span class="co">#&gt; 1 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a><span class="co">#&gt;   xml_bibliographicCitation</span></span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a><span class="co">#&gt; 1         The Kini Quartet.</span></span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a><span class="co">#&gt; New names:</span></span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a><span class="co">#&gt; • `ie_number` -&gt; `ie_number...2`</span></span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a><span class="co">#&gt; • `ie_number` -&gt; `ie_number...18`</span></span>
+<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a><span class="co">#&gt;    duration sample_rate num_channels amplitude</span></span>
+<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a><span class="co">#&gt; 1:  338.808       48000     16262784     20921</span></span>
+<span id="cb3-44"><a href="#cb3-44" tabindex="-1"></a><span class="co">#&gt;    duration sample_rate num_channels amplitude</span></span>
+<span id="cb3-45"><a href="#cb3-45" tabindex="-1"></a><span class="co">#&gt; 1:  338.808       48000     16262784     20921</span></span>
+<span id="cb3-46"><a href="#cb3-46" tabindex="-1"></a><span class="co">#&gt;   file_type ie_number  rep_number                     file_name</span></span>
+<span id="cb3-47"><a href="#cb3-47" tabindex="-1"></a><span class="co">#&gt; 1       mp3 IE1017269 REP74080121 FL74080125_1212219_PM_S_2.mp3</span></span>
+<span id="cb3-48"><a href="#cb3-48" tabindex="-1"></a><span class="co">#&gt;           xml_title                        xml_creators         xml_type</span></span>
+<span id="cb3-49"><a href="#cb3-49" tabindex="-1"></a><span class="co">#&gt; 1 The Kini Quartet. Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb3-50"><a href="#cb3-50" tabindex="-1"></a><span class="co">#&gt;                            xml_publisher xml_date xml_language xml_identifier</span></span>
+<span id="cb3-51"><a href="#cb3-51" tabindex="-1"></a><span class="co">#&gt; 1 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb3-52"><a href="#cb3-52" tabindex="-1"></a><span class="co">#&gt;   xml_bibliographicCitation</span></span>
+<span id="cb3-53"><a href="#cb3-53" tabindex="-1"></a><span class="co">#&gt; 1         The Kini Quartet.</span></span>
+<span id="cb3-54"><a href="#cb3-54" tabindex="-1"></a><span class="co">#&gt; New names:</span></span>
+<span id="cb3-55"><a href="#cb3-55" tabindex="-1"></a><span class="co">#&gt; New names:</span></span>
+<span id="cb3-56"><a href="#cb3-56" tabindex="-1"></a><span class="co">#&gt; • `ie_number` -&gt; `ie_number...2`</span></span>
+<span id="cb3-57"><a href="#cb3-57" tabindex="-1"></a><span class="co">#&gt; • `ie_number` -&gt; `ie_number...18`</span></span>
+<span id="cb3-58"><a href="#cb3-58" tabindex="-1"></a><span class="fu">head</span>(mydata)</span>
+<span id="cb3-59"><a href="#cb3-59" tabindex="-1"></a><span class="co">#&gt; $label_file_path</span></span>
+<span id="cb3-60"><a href="#cb3-60" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/Korotesv/DATA501/MusicFeatClassR/inst/csv/ies_mms_label.txt&quot;</span></span>
+<span id="cb3-61"><a href="#cb3-61" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-62"><a href="#cb3-62" tabindex="-1"></a><span class="co">#&gt; $csv_file_path</span></span>
+<span id="cb3-63"><a href="#cb3-63" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/Korotesv/DATA501/MusicFeatClassR/inst/csv/extracted_features.csv&quot;</span></span>
+<span id="cb3-64"><a href="#cb3-64" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-65"><a href="#cb3-65" tabindex="-1"></a><span class="co">#&gt; $root_dir</span></span>
+<span id="cb3-66"><a href="#cb3-66" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/Korotesv/DATA501/MusicFeatClassR/files/mp3&quot;</span></span>
+<span id="cb3-67"><a href="#cb3-67" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-68"><a href="#cb3-68" tabindex="-1"></a><span class="co">#&gt; $feature_data</span></span>
+<span id="cb3-69"><a href="#cb3-69" tabindex="-1"></a><span class="co">#&gt;    X file_type ie_number...3  rep_number                     file_name duration</span></span>
+<span id="cb3-70"><a href="#cb3-70" tabindex="-1"></a><span class="co">#&gt; 1  1       mp3     IE1017269 REP74080121 FL74080122_1212219_PM_S_1.mp3  309.912</span></span>
+<span id="cb3-71"><a href="#cb3-71" tabindex="-1"></a><span class="co">#&gt; 2  2       mp3     IE1017269 REP74080121 FL74080125_1212219_PM_S_2.mp3  338.808</span></span>
+<span id="cb3-72"><a href="#cb3-72" tabindex="-1"></a><span class="co">#&gt; 3 NA       mp3          &lt;NA&gt; REP74080121 FL74080122_1212219_PM_S_1.mp3  309.912</span></span>
+<span id="cb3-73"><a href="#cb3-73" tabindex="-1"></a><span class="co">#&gt; 4 NA       mp3          &lt;NA&gt; REP74080121 FL74080125_1212219_PM_S_2.mp3  338.808</span></span>
+<span id="cb3-74"><a href="#cb3-74" tabindex="-1"></a><span class="co">#&gt;   sample_rate num_channels amplitude         xml_title</span></span>
+<span id="cb3-75"><a href="#cb3-75" tabindex="-1"></a><span class="co">#&gt; 1       48000     14875776     14070 The Kini Quartet.</span></span>
+<span id="cb3-76"><a href="#cb3-76" tabindex="-1"></a><span class="co">#&gt; 2       48000     16262784     20921 The Kini Quartet.</span></span>
+<span id="cb3-77"><a href="#cb3-77" tabindex="-1"></a><span class="co">#&gt; 3       48000     14875776     14070 The Kini Quartet.</span></span>
+<span id="cb3-78"><a href="#cb3-78" tabindex="-1"></a><span class="co">#&gt; 4       48000     16262784     20921 The Kini Quartet.</span></span>
+<span id="cb3-79"><a href="#cb3-79" tabindex="-1"></a><span class="co">#&gt;                          xml_creators         xml_type</span></span>
+<span id="cb3-80"><a href="#cb3-80" tabindex="-1"></a><span class="co">#&gt; 1 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb3-81"><a href="#cb3-81" tabindex="-1"></a><span class="co">#&gt; 2 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb3-82"><a href="#cb3-82" tabindex="-1"></a><span class="co">#&gt; 3 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb3-83"><a href="#cb3-83" tabindex="-1"></a><span class="co">#&gt; 4 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb3-84"><a href="#cb3-84" tabindex="-1"></a><span class="co">#&gt;                            xml_publisher xml_date xml_language xml_identifier</span></span>
+<span id="cb3-85"><a href="#cb3-85" tabindex="-1"></a><span class="co">#&gt; 1 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb3-86"><a href="#cb3-86" tabindex="-1"></a><span class="co">#&gt; 2 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb3-87"><a href="#cb3-87" tabindex="-1"></a><span class="co">#&gt; 3 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb3-88"><a href="#cb3-88" tabindex="-1"></a><span class="co">#&gt; 4 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb3-89"><a href="#cb3-89" tabindex="-1"></a><span class="co">#&gt;   xml_bibliographicCitation          mms ie_number...19 label_code</span></span>
+<span id="cb3-90"><a href="#cb3-90" tabindex="-1"></a><span class="co">#&gt; 1         The Kini Quartet. 9.912122e+15      IE1017269         pp</span></span>
+<span id="cb3-91"><a href="#cb3-91" tabindex="-1"></a><span class="co">#&gt; 2         The Kini Quartet. 9.912122e+15      IE1017269         pp</span></span>
+<span id="cb3-92"><a href="#cb3-92" tabindex="-1"></a><span class="co">#&gt; 3         The Kini Quartet. 9.912122e+15           &lt;NA&gt;         pp</span></span>
+<span id="cb3-93"><a href="#cb3-93" tabindex="-1"></a><span class="co">#&gt; 4         The Kini Quartet. 9.912122e+15           &lt;NA&gt;         pp</span></span>
+<span id="cb3-94"><a href="#cb3-94" tabindex="-1"></a><span class="co">#&gt;          label1        label2 label3 label4 label5 ie_number...2 ie_number...18</span></span>
+<span id="cb3-95"><a href="#cb3-95" tabindex="-1"></a><span class="co">#&gt; 1 Popular music Songs, Māori.   &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;          &lt;NA&gt;           &lt;NA&gt;</span></span>
+<span id="cb3-96"><a href="#cb3-96" tabindex="-1"></a><span class="co">#&gt; 2 Popular music Songs, Māori.   &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;          &lt;NA&gt;           &lt;NA&gt;</span></span>
+<span id="cb3-97"><a href="#cb3-97" tabindex="-1"></a><span class="co">#&gt; 3 Popular music Songs, Māori.                          IE1017269      IE1017269</span></span>
+<span id="cb3-98"><a href="#cb3-98" tabindex="-1"></a><span class="co">#&gt; 4 Popular music Songs, Māori.                          IE1017269      IE1017269</span></span></code></pre></div>
+<p>For the purpose of data analysis, three S3 class methods for
+‘rpipeline’ were developed: ‘print,’ ‘summary,’ and ‘plot.’</p>
+<p>Currently, they are in a ‘draft’ stage and will be further developed
+for the complete package. (Note: To test the ‘plot’ S3 method, you need
+to load the ‘plot.rpipeline’ function into memory first, as it may not
+work well within the package.)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">print</span>(mydata)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; Custom rpipeline object</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; Label File Path: C:/Users/Korotesv/DATA501/MusicFeatClassR/inst/csv/ies_mms_label.txt </span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; CSV File Path: C:/Users/Korotesv/DATA501/MusicFeatClassR/inst/csv/extracted_features.csv </span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; Root Directory: C:/Users/Korotesv/DATA501/MusicFeatClassR/files/mp3 </span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; Feature Data Summary:</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt;    X file_type ie_number...3  rep_number                     file_name duration</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; 1  1       mp3     IE1017269 REP74080121 FL74080122_1212219_PM_S_1.mp3  309.912</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; 2  2       mp3     IE1017269 REP74080121 FL74080125_1212219_PM_S_2.mp3  338.808</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; 3 NA       mp3          &lt;NA&gt; REP74080121 FL74080122_1212219_PM_S_1.mp3  309.912</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; 4 NA       mp3          &lt;NA&gt; REP74080121 FL74080125_1212219_PM_S_2.mp3  338.808</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt;   sample_rate num_channels amplitude         xml_title</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; 1       48000     14875776     14070 The Kini Quartet.</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; 2       48000     16262784     20921 The Kini Quartet.</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt; 3       48000     14875776     14070 The Kini Quartet.</span></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; 4       48000     16262784     20921 The Kini Quartet.</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt;                          xml_creators         xml_type</span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt; 1 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt; 2 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; 3 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt; 4 Kini Quartet.||Raggett, Margarette. Sound Recordings</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt;                            xml_publisher xml_date xml_language xml_identifier</span></span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="co">#&gt; 1 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="co">#&gt; 2 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="co">#&gt; 3 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a><span class="co">#&gt; 4 Auckland, N.Z. :               Zodiac,   [1967]          mao      IE1017269</span></span>
+<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a><span class="co">#&gt;   xml_bibliographicCitation          mms ie_number...19 label_code</span></span>
+<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a><span class="co">#&gt; 1         The Kini Quartet. 9.912122e+15      IE1017269         pp</span></span>
+<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="co">#&gt; 2         The Kini Quartet. 9.912122e+15      IE1017269         pp</span></span>
+<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="co">#&gt; 3         The Kini Quartet. 9.912122e+15           &lt;NA&gt;         pp</span></span>
+<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="co">#&gt; 4         The Kini Quartet. 9.912122e+15           &lt;NA&gt;         pp</span></span>
+<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a><span class="co">#&gt;          label1        label2 label3 label4 label5 ie_number...2 ie_number...18</span></span>
+<span id="cb4-34"><a href="#cb4-34" tabindex="-1"></a><span class="co">#&gt; 1 Popular music Songs, Māori.   &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;          &lt;NA&gt;           &lt;NA&gt;</span></span>
+<span id="cb4-35"><a href="#cb4-35" tabindex="-1"></a><span class="co">#&gt; 2 Popular music Songs, Māori.   &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;          &lt;NA&gt;           &lt;NA&gt;</span></span>
+<span id="cb4-36"><a href="#cb4-36" tabindex="-1"></a><span class="co">#&gt; 3 Popular music Songs, Māori.                          IE1017269      IE1017269</span></span>
+<span id="cb4-37"><a href="#cb4-37" tabindex="-1"></a><span class="co">#&gt; 4 Popular music Songs, Māori.                          IE1017269      IE1017269</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; Summary of rpipeline object</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; Label File Path: C:/Users/Korotesv/DATA501/MusicFeatClassR/inst/csv/ies_mms_label.txt </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; CSV File Path: C:/Users/Korotesv/DATA501/MusicFeatClassR/inst/csv/extracted_features.csv </span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; Root Directory: C:/Users/Korotesv/DATA501/MusicFeatClassR/files/mp3 </span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; Feature Data Summary:</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;        X         file_type         ie_number...3       rep_number       </span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt;  Min.   :1.00   Length:4           Length:4           Length:4          </span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:1.25   Class :character   Class :character   Class :character  </span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt;  Median :1.50   Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt;  Mean   :1.50                                                           </span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:1.75                                                           </span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;  Max.   :2.00                                                           </span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt;  NA&#39;s   :2                                                              </span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt;   file_name            duration      sample_rate     num_channels     </span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt;  Length:4           Min.   :309.9   Min.   :48000   Min.   :14875776  </span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt;  Class :character   1st Qu.:309.9   1st Qu.:48000   1st Qu.:14875776  </span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Median :324.4   Median :48000   Median :15569280  </span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt;                     Mean   :324.4   Mean   :48000   Mean   :15569280  </span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt;                     3rd Qu.:338.8   3rd Qu.:48000   3rd Qu.:16262784  </span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt;                     Max.   :338.8   Max.   :48000   Max.   :16262784  </span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt;                                                                       </span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt;    amplitude      xml_title         xml_creators         xml_type        </span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt;  Min.   :14070   Length:4           Length:4           Length:4          </span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:14070   Class :character   Class :character   Class :character  </span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co">#&gt;  Median :17496   Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co">#&gt;  Mean   :17496                                                           </span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:20921                                                           </span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt;  Max.   :20921                                                           </span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co">#&gt;                                                                          </span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt;  xml_publisher        xml_date         xml_language       xml_identifier    </span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co">#&gt;  Length:4           Length:4           Length:4           Length:4          </span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   Class :character   Class :character  </span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co">#&gt;  xml_bibliographicCitation      mms            ie_number...19    </span></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co">#&gt;  Length:4                  Min.   :9.912e+15   Length:4          </span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co">#&gt;  Class :character          1st Qu.:9.912e+15   Class :character  </span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co">#&gt;  Mode  :character          Median :9.912e+15   Mode  :character  </span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co">#&gt;                            Mean   :9.912e+15                     </span></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co">#&gt;                            3rd Qu.:9.912e+15                     </span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="co">#&gt;                            Max.   :9.912e+15                     </span></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co">#&gt;                                                                  </span></span>
+<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="co">#&gt;   label_code           label1             label2             label3         </span></span>
+<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="co">#&gt;  Length:4           Length:4           Length:4           Length:4          </span></span>
+<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   Class :character   Class :character  </span></span>
+<span id="cb5-51"><a href="#cb5-51" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span id="cb5-52"><a href="#cb5-52" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-53"><a href="#cb5-53" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-54"><a href="#cb5-54" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-55"><a href="#cb5-55" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-56"><a href="#cb5-56" tabindex="-1"></a><span class="co">#&gt;     label4             label5          ie_number...2      ie_number...18    </span></span>
+<span id="cb5-57"><a href="#cb5-57" tabindex="-1"></a><span class="co">#&gt;  Length:4           Length:4           Length:4           Length:4          </span></span>
+<span id="cb5-58"><a href="#cb5-58" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   Class :character   Class :character  </span></span>
+<span id="cb5-59"><a href="#cb5-59" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span id="cb5-60"><a href="#cb5-60" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-61"><a href="#cb5-61" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-62"><a href="#cb5-62" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb5-63"><a href="#cb5-63" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
+<p>Note: Currently “plot” does not load correctly, so I copied the
+script here</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">plot</span>(mydata)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt; Warning in cor(df_numeric): the standard deviation is zero</span></span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="classification" class="section level2">
+<h2>Classification</h2>
+<p>Once you have collected all the features from your dataset, you can
+proceed to the next stage - Machine Learning (ML) classification. The
+source of classification is a dataframe built from the
+“extracted_features.csv” file; however, since the example music dataset
+is relatively small, please consider using the
+“extracted_features_original.csv” file, which contains more than 50,000
+rows of data.</p>
+<p>In addition to Random Forest, which is considered one of the best
+classifiers, the package also includes Naive Bayes, Support Vector
+Machine, and Logistic Regression methods. You can call the specific
+method by replacing “RandomForest” with “LogisticRegression,”
+“NaiveBayes,” or “SupportVectorMachine.”</p>
+<p>To initiate the classification process, you can use the “classify.R”
+code from the “inst/scripts” directory or copy it from the code
+snippets.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(randomForest))</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; randomForest 4.7-1.1</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt; Type rfNews() to see new features/changes/bug fixes.</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;randomForest&#39;</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;     combine</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(caret))</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; Loading required package: ggplot2</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;ggplot2&#39;</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:randomForest&#39;:</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt;     margin</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; Loading required package: lattice</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;caret&#39;</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;     lift</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="fu">library</span>(Rcpp)</span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="fu">library</span>(MusicFeatClassR)</span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a>csv_file_name<span class="ot">&lt;-</span><span class="st">&quot;extracted_features_original.csv&quot;</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a>vignettes_dir<span class="ot">&lt;-</span><span class="fu">getwd</span>()</span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a>parent_dir<span class="ot">&lt;-</span><span class="fu">dirname</span>(vignettes_dir)</span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a>csv_files_path<span class="ot">&lt;-</span><span class="fu">file.path</span>(parent_dir, <span class="st">&quot;inst&quot;</span>,<span class="st">&quot;csv&quot;</span>)</span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a>csv_file_path<span class="ot">&lt;-</span><span class="fu">file.path</span>(csv_files_path, csv_file_name)</span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a>feature_data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(csv_file_path)</span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">train_classifier</span>(feature_data, <span class="at">target_variable =</span> <span class="st">&quot;label_code&quot;</span>,<span class="at">classif =</span> <span class="st">&quot;RandomForest&quot;</span>)</span></code></pre></div>
+<p>Class result also has print and summary methods</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">print</span>(result)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt; $accuracy</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; [1] 0.7344086</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; $confusion_matrix</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; Confusion Matrix and Statistics</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;           Reference</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; Prediction  bl  cy  df  fm  jz  pp  rc  sg  uu  zz</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;         bl  10   0   0   0   0   0   1   0   0   3</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;         cy   0  15   0   0   0   1   4   2   0   0</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt;         df   0   1  48   0   1   5   4   0   1   4</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt;         fm   0   0   0  32   1   3   2   0   0   2</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt;         jz   0   0   2   0  56   2   6   0   0   1</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt;         pp   0   3   2   3   1 130  31   7   2  13</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt;         rc   3   4  18   1   7  29 415  10   6  77</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt;         sg   0   0   0   2   0   3   0  11   0   5</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt;         uu   0   0   0   0   0   0   0   0   2   1</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt;         zz   0   4  17   7   8  51 120   7   6 647</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; Overall Statistics</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt;                                           </span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt;                Accuracy : 0.7344          </span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt;                  95% CI : (0.7137, 0.7544)</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt;     No Information Rate : 0.4048          </span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt;     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       </span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt;                                           </span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt;                   Kappa : 0.6199          </span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt;                                           </span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt;  Mcnemar&#39;s Test P-Value : NA              </span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; Statistics by Class:</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt;                      Class: bl Class: cy Class: df Class: fm Class: jz</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co">#&gt; Sensitivity           0.769231  0.555556   0.55172   0.71111   0.75676</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt; Specificity           0.997834  0.996181   0.99098   0.99559   0.99384</span></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="co">#&gt; Pos Pred Value        0.714286  0.681818   0.75000   0.80000   0.83582</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co">#&gt; Neg Pred Value        0.998375  0.993471   0.97829   0.99286   0.98996</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="co">#&gt; Prevalence            0.006989  0.014516   0.04677   0.02419   0.03978</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="co">#&gt; Detection Rate        0.005376  0.008065   0.02581   0.01720   0.03011</span></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="co">#&gt; Detection Prevalence  0.007527  0.011828   0.03441   0.02151   0.03602</span></span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="co">#&gt; Balanced Accuracy     0.883533  0.775868   0.77135   0.85335   0.87530</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="co">#&gt;                      Class: pp Class: rc Class: sg Class: uu Class: zz</span></span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="co">#&gt; Sensitivity            0.58036    0.7118  0.297297  0.117647    0.8592</span></span>
+<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="co">#&gt; Specificity            0.96210    0.8786  0.994515  0.999457    0.8013</span></span>
+<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="co">#&gt; Pos Pred Value         0.67708    0.7281  0.523810  0.666667    0.7463</span></span>
+<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="co">#&gt; Neg Pred Value         0.94365    0.8698  0.985862  0.991922    0.8933</span></span>
+<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="co">#&gt; Prevalence             0.12043    0.3134  0.019892  0.009140    0.4048</span></span>
+<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="co">#&gt; Detection Rate         0.06989    0.2231  0.005914  0.001075    0.3478</span></span>
+<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="co">#&gt; Detection Prevalence   0.10323    0.3065  0.011290  0.001613    0.4661</span></span>
+<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="co">#&gt; Balanced Accuracy      0.77123    0.7952  0.645906  0.558552    0.8302</span></span>
+<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="co">#&gt; $trained_model</span></span>
+<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="co">#&gt;  randomForest(formula = train_target ~ ., data = train_data) </span></span>
+<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="co">#&gt;                Type of random forest: classification</span></span>
+<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="co">#&gt;                      Number of trees: 500</span></span>
+<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a><span class="co">#&gt; No. of variables tried at each split: 2</span></span>
+<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="co">#&gt;         OOB estimate of  error rate: 28.34%</span></span>
+<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="co">#&gt; Confusion matrix:</span></span>
+<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="co">#&gt;    bl cy df fm  jz  pp  rc sg uu   zz class.error</span></span>
+<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="co">#&gt; bl 24  0  1  0   0   2   1  0  0    4   0.2500000</span></span>
+<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="co">#&gt; cy  0 30  0  1   1  10   8  3  0   10   0.5238095</span></span>
+<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="co">#&gt; df  0  0 87  3   1  11  52  1  0   49   0.5735294</span></span>
+<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="co">#&gt; fm  0  0  4 69   3   6   8  1  0   17   0.3611111</span></span>
+<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="co">#&gt; jz  0  0  2  2 116   5  29  1  0   20   0.3371429</span></span>
+<span id="cb8-70"><a href="#cb8-70" tabindex="-1"></a><span class="co">#&gt; pp  2  7 12  5   3 293  79 13  1  108   0.4397706</span></span>
+<span id="cb8-71"><a href="#cb8-71" tabindex="-1"></a><span class="co">#&gt; rc  0  4 12  8  11  60 994  8  3  263   0.2707263</span></span>
+<span id="cb8-72"><a href="#cb8-72" tabindex="-1"></a><span class="co">#&gt; sg  0  4  0  6   2  17  28 16  1   15   0.8202247</span></span>
+<span id="cb8-73"><a href="#cb8-73" tabindex="-1"></a><span class="co">#&gt; uu  0  0  0  2   0   2  14  1  1   21   0.9756098</span></span>
+<span id="cb8-74"><a href="#cb8-74" tabindex="-1"></a><span class="co">#&gt; zz  2  8 19  4  16  19 184  7  7 1491   0.1513944</span></span>
+<span id="cb8-75"><a href="#cb8-75" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-76"><a href="#cb8-76" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;class&quot;)</span></span>
+<span id="cb8-77"><a href="#cb8-77" tabindex="-1"></a><span class="co">#&gt; [1] &quot;train_classifier&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">summary</span>(result)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#&gt;                  Length Class                Mode   </span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt; accuracy          1     -none-               numeric</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt; confusion_matrix  6     confusionMatrix      list   </span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; trained_model    19     randomForest.formula list</span></span></code></pre></div>
+<p>As for data extractor , train classifier also has S3 plot method
+which is currently not working. So, if it does not work, please run S3
+method script first.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">plot</span>(result)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- -->
+### RCPP code</p>
+<p>The package also contains c++ method which build additional
+statistics using confusion matrix from results: <a href="https://en.wikipedia.org/wiki/Phi_coefficient">Matthews
+correlation coefficient (MCC)</a> and <a href="https://en.wikipedia.org/wiki/F-score">F1-score</a>. The original
+script is in “src/get_metrics.cpp”. It is taking as input the table
+derived from confusion matrix. See example below.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co">#sourceCpp(parent_dir,&quot;src&quot;,&quot;get_metrics.cpp&quot;)</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">classificationMetrics</span>(result<span class="sc">$</span>confusion_matrix<span class="sc">$</span>table)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#&gt;  F1_Score       MCC </span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#&gt; 0.6258952 0.6001964</span></span></code></pre></div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

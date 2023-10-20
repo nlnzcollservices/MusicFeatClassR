@@ -1,0 +1,148 @@
+---
+title: "Manual"
+author: "Svetlana Koroteeva"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    path: "vignettes/Testing_plan.html"
+  rmarkdown::html_vignette:
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{Manual}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r setup, include = FALSE, warning = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+# MusicFeatClassR package
+
+## Description
+
+The MusicFeatClassR package aims to provide an end-to-end solution for music genre classification using Machine Learning (ML) techniques. The primary problem it addresses is automating the process of music genre classification, which involves extracting essential features from music datasets and training ML classifiers to predict the genre of music.
+
+The MusicFeatClassR package consists of two main separate parts: feature extraction and classification. 
+
+## Feature extraction
+
+It also has specific data requirements. The music dataset consists of Dissemination Information Packages (DIP) extracted from a Library preservation system based on OAIS. Another important file is "ies_mms_label.txt," which contains identification numbers and class labels extracted from the library system (Note: Collecting class labels from the library system is not yet implemented).
+
+For preparation, place the music dataset in the "files/mp3" folder and the "ies_mms_label.txt" file in the "inst/csv" folder. You can find all code examples in the "inst/scripts" folder. Currently, only mp3 feature extraction is implemented.
+
+Please note that the example dataset contains only 10 DIP folders. It is not sufficient for classification but serves as a test to ensure that feature extraction is working.
+
+To initiate the feature extraction process, you can either run the "run_extraction.R" script or copy the following code snippet. This script will extract features from the music dataset, extract text metadata from "ie.xml" files (inside each DIP), and match them with labels from your "mms_ies_label.txt" file. It will create one metadata row for each music file, bind them to the main data frame, write the data frame to a CSV output file ("extracted_features.csv"), and return the data frame. Let's get started.
+
+Ensure that you have loaded all the necessary libraries.
+
+```{r, message = FALSE, warning=FALSE}
+library(xml2)
+library(dplyr)
+library(purrr)
+library(tuneR)
+library(data.table)
+library(reshape2)
+library(MusicFeatClassR) # the package
+
+```
+
+Here, you can customize the names of the output and input files, which contain labels. Before running the main pipeline, you should specify label_file_path, csv_file_path, and filesdir (for music packages).
+
+```{r}
+csv_file_name<-"extracted_features.csv"
+label_file<-"ies_mms_label.txt"
+vignettes_dir<-getwd()
+parent_dir<-dirname(vignettes_dir)
+
+csv_files_path<-file.path(parent_dir, "inst","csv")
+csv_file_path<- file.path(csv_files_path, csv_file_name)
+label_file_path<-file.path(csv_files_path, label_file)
+filesdir <- file.path(parent_dir,'files','mp3')
+```
+
+Now you can initiate the pipeline. The entire process may take a couple of hours on the original dataset (please note that the example dataset only contains 10 albums). If the process is interrupted, the script will pick up from the last processed DIP folder in the next run.
+
+```{r}
+mydata<-rpipeline(label_file_path, csv_file_path, filesdir)
+head(mydata)
+
+```
+For the purpose of data analysis, three S3 class methods for 'rpipeline' were developed: 'print,' 'summary,' and 'plot.'
+
+Currently, they are in a 'draft' stage and will be further developed for the complete package. (Note: To test the 'plot' S3 method, you need to load the 'plot.rpipeline' function into memory first, as it may not work well within the package.)
+
+```{r}
+
+print(mydata)
+
+```
+
+```{r}
+
+summary(mydata)
+
+```
+Note: Currently "plot" does not load correctly, so I copied the script here
+```{r}
+
+plot(mydata)
+
+```
+
+## Classification
+ 
+Once you have collected all the features from your dataset, you can proceed to the next stage - Machine Learning (ML) classification. The source of classification is a dataframe built from the "extracted_features.csv" file; however, since the example music dataset is relatively small, please consider using the "extracted_features_original.csv" file, which contains more than 50,000 rows of data.
+
+In addition to Random Forest, which is considered one of the best classifiers, the package also includes Naive Bayes, Support Vector Machine, and Logistic Regression methods. You can call the specific method by replacing "RandomForest" with "LogisticRegression," "NaiveBayes," or "SupportVectorMachine."
+
+To initiate the classification process, you can use the "classify.R" code from the "inst/scripts" directory or copy it from the code snippets.
+```{r, message = FALSE, warning=FALSE}
+library(randomForest)
+library(caret)
+library(data.table)
+library(stringr)
+library(e1071)
+library(nnet)
+library(Rcpp)
+library(MusicFeatClassR)
+csv_file_name<-"extracted_features_original.csv"
+vignettes_dir<-getwd()
+parent_dir<-dirname(vignettes_dir)
+csv_files_path<-file.path(parent_dir, "inst","csv")
+csv_file_path<-file.path(csv_files_path, csv_file_name)
+feature_data<-read.csv(csv_file_path)
+result <- train_classifier(feature_data, target_variable = "label_code",classif = "RandomForest")
+
+```
+
+Class result also has print and summary methods
+```{r}
+
+print(result)
+
+```
+```{r}
+summary(result)
+```
+
+```{r}
+
+plot(result)
+
+```
+
+### RCPP code
+
+The package also contains c++ method which build additional statistics using confusion matrix from results: [Matthews correlation coefficient (MCC)](https://en.wikipedia.org/wiki/Phi_coefficient) and [F1-score](https://en.wikipedia.org/wiki/F-score). The original script is in "src/get_metrics.cpp". It is taking as input the table derived from confusion matrix. See example below.
+
+
+```{r}
+
+#sourceCpp(parent_dir,"src","get_metrics.cpp")
+classificationMetrics(result$confusion_matrix$table)
+
+```

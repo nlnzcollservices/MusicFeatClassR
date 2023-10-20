@@ -1,0 +1,41 @@
+Package: MusicFeatClassR
+Type: Package
+Title: Music Genre Classifier
+Version: 0.1.0
+Author: Svetlana Koroteeva
+Maintainer: Svetlana Koroteeva <svetlana.koroteeva@gmail.com>
+Description: 
+    This package offers a music genre classifier that combines feature extraction 
+    and classification techniques. It automatically categorizes music tracks into 
+    genres based on their unique audio characteristics and bibliographic records. 
+    The classifier's results can be utilized as a tool for catalogers and for the 
+    automatic generation of bibliographical records.
+License: MIT
+VignetteBuilder: knitr
+VignetteIndexEntry: Introduction to MusicFeatClassR
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    tuneR,
+    data.table,
+    Rcpp,
+    ggplot2,
+    caret,
+    randomForest,
+    glmnet,
+    pROC,
+    stringr,
+    e1071,
+    nnet,
+    xml2,
+    dplyr,
+    purrr,
+    testthat
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RoxygenNote: 7.2.3
+LinkingTo: 
+    Rcpp

@@ -1,0 +1,54 @@
+---
+title: "Testing plan"
+author: "Svetlana Koroteeva"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    self_contained: false
+    keep_md: true
+    path: "vignettes/Testing_plan.html"
+vignette: >
+  %\VignetteIndexEntry{Testing plan}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+# Testing Plan
+
+## Automated Tests
+
+Set of automated unit tests is included to the package. 
+
+## `testthat`
+
+The unittests are implemented using the `testthat` framework. To run the tests, load MusicFeatClassR, and then use the `test_dir()` or `test_file()` functions provided by `testthat`. For example:
+
+
+```{r,  warning=FALSE}
+library(MusicFeatClassR)
+library(testthat)
+current_dir<-getwd()
+root_dir<-dirname(current_dir)
+test_dir(file.path(root_dir,"tests"))
+```
+
+This will execute all the tests. Note: there are could be warnings related to packages.
+
+## Interpreting the Results
+
+After running the tests, testthat will give a summary of test results, which tests are passed and failed.
+
+## Writing New Tests
+
+New tests could be placed in "tests" folder.
+
+## Continuous Integration
+
+Run the tests whenever changes are made for the package.
+

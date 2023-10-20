@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <mets:mets xmlns:mets="http://www.loc.gov/METS/">
+        <mets:dmdSec ID="ie-dmd">
+          <mets:mdWrap MDTYPE="DC">
+            <mets:xmlData>
+              <dc:record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcterms="http://purl.org/dc/terms/">
+                <dc:title>Māoritanga /               by the Maniapoto Voices.</dc:title>
+                <dc:creator>Maniapoto Voices.</dc:creator>
+                <dc:creator>Deller, Hinerangi.</dc:creator>
+                <dc:creator>Bradfield, Johnny.</dc:creator>
+                <dc:creator>Morgan, Chuck, 1952-2018.</dc:creator>
+                <dc:creator>Penney, Bert.</dc:creator>
+                <dc:creator>Herewini, William.</dc:creator>
+                <dc:type>Sound Recordings</dc:type>
+                <dc:publisher>Auckland, N.Z. :               Zodiac,</dc:publisher>
+                <dc:date>[1966?]</dc:date>
+                <dc:language>mao</dc:language>
+                <dc:identifier>IE1005520</dc:identifier>
+                <dcterms:bibliographicCitation>Māoritanga</dcterms:bibliographicCitation>
+              </dc:record>
+            </mets:xmlData>
+          </mets:mdWrap>
+        </mets:dmdSec>
+      </mets:mets>
