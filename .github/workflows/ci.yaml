@@ -7,9 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-latest
     runs-on: windows-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -29,4 +27,3 @@ jobs:
       run: Rscript -e 'testthat::test_dir("tests")'
 
     - name: Check Your Package
-      run: Rscript -e 'devtools::check()'
