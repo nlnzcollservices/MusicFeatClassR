@@ -25,8 +25,17 @@ rpipeline <- function(label_file_path, csv_file_path, root_dir) {
 
   if (is.null(label_file_path) ||
       is.null(csv_file_path) || is.null(root_dir)) {
-    stop("All paths (label_file_path, csv_file_path, root_dir) must be provided.")
+    stop("All paths (label_file_path, csv_file_path, root_dir) must be provided.\n")
   }
+
+  if (!file.exists(label_file_path)) {
+    stop("Labels file paths are incorrect. Please verify and try again.\n")
+  }
+
+  if (!dir.exists(root_dir)) {
+    stop("The music directory does not exist.\n")
+  }
+
 
   previous_ie <- NA
   flag <- TRUE
