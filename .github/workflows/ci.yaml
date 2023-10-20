@@ -1,0 +1,25 @@
+name: R-CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: 4.x
+
+    - name: Install Dependencies
+      run: Rscript -e 'install.packages(c("devtools", "testthat"))'
+
+    - name: Build and Test
+      run: Rscript -e 'testthat::test_dir()'
