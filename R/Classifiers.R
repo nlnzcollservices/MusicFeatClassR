@@ -28,6 +28,7 @@ train_classifier <-
            classif,
            train_percentage = 0.7,
            save_trained_model=TRUE) {
+           train_percentage = 0.7) {
     if (!is.data.frame(feature_data)) {
       stop("Input 'dataframe' must be a data frame.")
     }

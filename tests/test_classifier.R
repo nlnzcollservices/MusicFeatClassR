@@ -17,6 +17,7 @@ test_that("train_classifier with correct values returns expected results", {
 
   expect_type(results_rf, "list")
   expect_named(results_rf, c("accuracy", "confusion_matrix", "trained_model"))
+  expect_named(results_rf, c("accuracy", "confusion_matrix", "trained_model","predictions"))
   expect_type(results_rf$accuracy, "double")
   expect_s3_class(results_rf$confusion_matrix, "confusionMatrix")
   expect_s3_class(results_rf, "train_classifier")
