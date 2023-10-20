@@ -3,17 +3,17 @@ title: "Manual"
 author: "Svetlana Koroteeva"
 date: "`r Sys.Date()`"
 output: 
+  html_document:
+    path: "vignettes/Testing_plan.html"
   rmarkdown::html_vignette:
     fig_caption: yes
-
-
 vignette: >
   %\VignetteIndexEntry{Manual}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include = FALSE, warning = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -39,13 +39,13 @@ To initiate the feature extraction process, you can either run the "run_extracti
 
 Ensure that you have loaded all the necessary libraries.
 
-```{r}
+```{r, message = FALSE, warning=FALSE}
 library(xml2)
-suppressWarnings(library(dplyr))
+library(dplyr)
 library(purrr)
-suppressWarnings(library(tuneR))
-suppressWarnings(library(data.table))
-suppressWarnings(library(reshape2))
+library(tuneR)
+library(data.table)
+library(reshape2)
 library(MusicFeatClassR) # the package
 
 ```
@@ -100,9 +100,9 @@ Once you have collected all the features from your dataset, you can proceed to t
 In addition to Random Forest, which is considered one of the best classifiers, the package also includes Naive Bayes, Support Vector Machine, and Logistic Regression methods. You can call the specific method by replacing "RandomForest" with "LogisticRegression," "NaiveBayes," or "SupportVectorMachine."
 
 To initiate the classification process, you can use the "classify.R" code from the "inst/scripts" directory or copy it from the code snippets.
-```{r}
-suppressWarnings(library(randomForest))
-suppressWarnings(library(caret))
+```{r, message = FALSE, warning=FALSE}
+library(randomForest)
+library(caret)
 library(data.table)
 library(stringr)
 library(e1071)
@@ -129,13 +129,12 @@ print(result)
 summary(result)
 ```
 
-As for data extractor , train classifier also has S3 plot method which is currently not working. So, if it does not work, please run S3 method script first.
-
 ```{r}
 
 plot(result)
 
 ```
+
 ### RCPP code
 
 The package also contains c++ method which build additional statistics using confusion matrix from results: [Matthews correlation coefficient (MCC)](https://en.wikipedia.org/wiki/Phi_coefficient) and [F1-score](https://en.wikipedia.org/wiki/F-score). The original script is in "src/get_metrics.cpp". It is taking as input the table derived from confusion matrix. See example below.

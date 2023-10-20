@@ -1,16 +1,16 @@
-## ----setup, include = FALSE---------------------------------------------------
+## ----setup, include = FALSE, warning = FALSE----------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## -----------------------------------------------------------------------------
+## ----message = FALSE, warning=FALSE-------------------------------------------
 library(xml2)
-suppressWarnings(library(dplyr))
+library(dplyr)
 library(purrr)
-suppressWarnings(library(tuneR))
-suppressWarnings(library(data.table))
-suppressWarnings(library(reshape2))
+library(tuneR)
+library(data.table)
+library(reshape2)
 library(MusicFeatClassR) # the package
 
 
@@ -45,9 +45,9 @@ summary(mydata)
 plot(mydata)
 
 
-## -----------------------------------------------------------------------------
-suppressWarnings(library(randomForest))
-suppressWarnings(library(caret))
+## ----message = FALSE, warning=FALSE-------------------------------------------
+library(randomForest)
+library(caret)
 library(data.table)
 library(stringr)
 library(e1071)
