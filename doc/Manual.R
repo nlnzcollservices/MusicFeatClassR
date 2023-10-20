@@ -60,7 +60,10 @@ parent_dir<-dirname(vignettes_dir)
 csv_files_path<-file.path(parent_dir, "inst","csv")
 csv_file_path<-file.path(csv_files_path, csv_file_name)
 feature_data<-read.csv(csv_file_path)
-result <- train_classifier(feature_data, target_variable = "label_code",classif = "RandomForest")
+result <- train_classifier(feature_data ,classif = "RandomForest")
+model_path<-file.path(parent_dir, "inst", "model.rds")
+#the model can be saved
+saveRDS(result$trained_model, file = model_path)
 
 
 ## -----------------------------------------------------------------------------
@@ -81,4 +84,6 @@ plot(result)
 #sourceCpp(parent_dir,"src","get_metrics.cpp")
 classificationMetrics(result$confusion_matrix$table)
 
+
+## -----------------------------------------------------------------------------
 

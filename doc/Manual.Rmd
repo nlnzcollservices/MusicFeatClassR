@@ -115,7 +115,10 @@ parent_dir<-dirname(vignettes_dir)
 csv_files_path<-file.path(parent_dir, "inst","csv")
 csv_file_path<-file.path(csv_files_path, csv_file_name)
 feature_data<-read.csv(csv_file_path)
-result <- train_classifier(feature_data, target_variable = "label_code",classif = "RandomForest")
+result <- train_classifier(feature_data ,classif = "RandomForest")
+model_path<-file.path(parent_dir, "inst", "model.rds")
+#the model can be saved
+saveRDS(result$trained_model, file = model_path)
 
 ```
 
@@ -146,3 +149,54 @@ The package also contains c++ method which build additional statistics using con
 classificationMetrics(result$confusion_matrix$table)
 
 ```
+
+### Other classifiers and additional parameters.
+
+You can learn more about parameters in the following functions/libraries documentation - randomForest, naiveBayes, svm (e1071 library), multinom (standard R library)
+
+
+classifier_name <- "RandomForest"
+classifier_params <- list(
+  ntree = 2000,  
+  mtry = 4     
+)
+
+classifier_name <- "LogisticRegression"
+classifier_params<- list(
+  family = "binomial",
+  maxit = 10000,
+  tol = 1e-5,
+  lambda = 0.1,
+  alpha = 0.5
+)
+
+result <- train_classifier(feature_data, classif = classifier_name, classif_params = classifier_params)
+result$accuracy
+
+classifier_name<- "SupportVectorMachine"
+classifier_params <- list(
+  kernel = "linear",
+  cost = 1.0,
+  gamma = 0.01,
+  degree = 3,
+  coef0 = 0
+)
+
+result <- train_classifier(feature_data, classif = classifier_name, classif_params = classifier_params)
+
+result$accuracy
+
+
+classifier_name_naive_bayes <- "NaiveBayes"
+classifier_params_naive_bayes <- list(
+  laplace = 1,
+  usekernel = TRUE,
+  fL = 0.01,
+  adjust = 1
+)
+
+result <- train_classifier(feature_data, classif = classifier_name, classif_params = classifier_params)
+
+result$accuracy
+
+```{R}
