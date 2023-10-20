@@ -3,7 +3,6 @@
   #' This function trains a random forest classifier on a given dataset and returns multiple results.
   #'
   #' @param feature_data The input dataframe containing the dataset.
-#' @param target_variable The name of the target variable.
   #' @param classif Classifier name to use.
   #' @param train_percentage The percentage of data to be used for training (default is 0.7).
   #'
@@ -11,9 +10,8 @@
   #'
   #' @examples
   #'feature_data <- read.csv("data.csv")
-#' target_variable <- "label_code"
-#' calssif<-"RandomForest"#(or "LogisticRegression")
-#' results <- train_random_forest_classifier(feature_data, target_variable)
+  #' classif<-"RandomForest"#(or "LogisticRegression")
+  #' results <- train_classifier(feature_data, classifier, classifier parameters)
   #'
   #' @importFrom randomForest randomForest
   #' @importFrom caret createDataPartition confusionMatrix
@@ -24,8 +22,8 @@
   #'
   train_classifier <-
     function(feature_data,
-           target_variable,
              classif,
+             classif_params =list(),
              train_percentage = 0.7) {
       if (!is.data.frame(feature_data)) {
         stop("Input 'dataframe' must be a data frame.")
@@ -33,13 +31,10 @@
       if (nrow(feature_data) == 0) {
         stop("The data frame is empty.")
       }
-g
-    if (!is.character(target_variable)){
-      stop("Input 'target_variable' must be a character string.")
 
-
+      if (!is.list(classif_params)) {
+        stop("Input 'classif_params' must be a list.")
       }
-
       supported_classifiers <- c("RandomForest", "LogisticRegression","SupportVectorMachine","NaiveBayes")
       dataframe_filtered <-
         feature_data[complete.cases(feature_data[, "label_code"]),]
@@ -74,16 +69,14 @@ g
 
       if (classif %in% supported_classifiers) {
         if (classif == "RandomForest") {
-        my_model <- randomForest(train_target ~ ., data = train_data)
+          my_model <- do.call(randomForest, c(list(formula = train_target ~ ., data = train_data), classif_params))
         } else if (classif == "SupportVectorMachine") {
-        my_model <-
-          svm(train_target ~ ., data = train_data, kernel = "linear")
+          my_model <- do.call(svm, c(list(formula = train_target ~ ., data = train_data), classif_params))
         } else if (classif == "LogisticRegression") {
-      my_model <-
-        multinom(train_target ~ ., data = train_data)
+          my_model <- do.call(multinom, c(list(formula = train_target ~ ., data = train_data), classif_params))
         } else if (classif == "NaiveBayes") {
-        my_model <-
-          naiveBayes(train_target ~ ., data = train_data)
+          my_model <- do.call(naiveBayes, c(list(formula = train_target ~ ., data = train_data), classif_params))
+
         }
 
         #   # ...
@@ -112,7 +105,4 @@ g
      }
     }
 
-       stop(paste(classif, "is not supported. Avilable classifiers are ", paste(supported_classifiers, collapse=", "), "."))
-   }
-  }
 
