@@ -13,7 +13,7 @@ test_that("train_classifier with correct values returns expected results", {
   csv_file_path<-file.path(fold_path, csv_file_name)
   feature_data<-read.csv(csv_file_path)
 
-  results_rf <- train_classifier(feature_data, "label_code", "RandomForest")
+  results_rf <- train_classifier(feature_data, "RandomForest")
 
   expect_type(results_rf, "list")
   expect_named(results_rf, c("accuracy", "confusion_matrix", "trained_model","predictions"))
@@ -26,13 +26,13 @@ test_that("train_classifier with correct values returns expected results", {
 # Incorrect values test cases
 test_that("train_classifier with incorrect values returns an appropriate error messages", {
   feature_data<-"Random string"
-  expect_error(train_classifier(feature_data, "label_code", "RandomForest"),"Input 'dataframe' must be a data frame.")
+  expect_error(train_classifier(feature_data,  "RandomForest"),"Input 'dataframe' must be a data frame.")
   fold_path<-file.path(getwd(), 'files')
     csv_file_name<-"extracted_features_empty.csv"
     csv_file_path<-file.path(fold_path, csv_file_name)
     feature_data<-read.csv(csv_file_path)
 
-    expect_error(train_classifier(feature_data, "label_code", "RandomForest"),
+    expect_error(train_classifier(feature_data, "RandomForest"),
                  "The data frame is empty.")
     csv_file_name<-"extracted_features_correct.csv"
     csv_file_path<-file.path(fold_path, csv_file_name)
@@ -40,8 +40,11 @@ test_that("train_classifier with incorrect values returns an appropriate error m
 
 
   # Test an incorrect target variable
-  expect_error(train_classifier(feature_data, 2, "RandomForest"),
-               "Input 'target_variable' must be a character string.")
+    expect_error(train_classifier(feature_data, "RandomForest", 2),
+                 "Input 'classif_params' must be a list.")
 
-  expect_error(train_classifier(feature_data, "label_code", " Kneighbour is not supported. Avilable classifiers are  RandomForest, LogisticRegression, SupportVectorMachine, NaiveBayes ."))
+    expect_error(train_classifier(feature_data, "RandomForest", "a"),
+                 "Input 'classif_params' must be a list.")
+
+    expect_error(train_classifier(feature_data, "Kneighbour"), "Kneighbour is not supported. Avilable classifiers are  RandomForest, LogisticRegression, SupportVectorMachine, NaiveBayes .")
 })
