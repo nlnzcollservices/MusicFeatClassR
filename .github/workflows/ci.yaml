@@ -20,7 +20,7 @@ jobs:
         r-version: 4.x
 
     - name: Install Dependencies
-      run: Rscript -e 'install.packages(c("devtools", "testthat"))'
+      run: Rscript -e 'install.packages("testthat")'
 
     - name: Build and Test
       run: Rscript -e 'testthat::test_dir()'
