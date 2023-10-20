@@ -26,8 +26,6 @@ train_classifier <-
   function(feature_data,
            target_variable,
            classif,
-           train_percentage = 0.7,
-           save_trained_model=TRUE) {
            train_percentage = 0.7) {
     if (!is.data.frame(feature_data)) {
       stop("Input 'dataframe' must be a data frame.")
@@ -35,7 +33,7 @@ train_classifier <-
     if (nrow(feature_data) == 0) {
       stop("The data frame is empty.")
     }
-
+g
     if (!is.character(target_variable)){
       stop("Input 'target_variable' must be a character string.")
 

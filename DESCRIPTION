@@ -30,7 +30,6 @@ Imports:
     xml2,
     dplyr,
     purrr,
-    testthat
     testthat,
     reshape2
 Suggests: 
