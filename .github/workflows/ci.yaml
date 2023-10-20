@@ -24,3 +24,9 @@ jobs:
 
     - name: Build and Test
       run: Rscript -e 'testthat::test_dir()'
+
+      - name: Run Tests
+      run: Rscript -e 'testthat::test_dir("tests")'
+
+    - name: Check Your Package
+      run: Rscript -e 'devtools::check()'
