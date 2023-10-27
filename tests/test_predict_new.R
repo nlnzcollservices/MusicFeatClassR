@@ -1,4 +1,5 @@
 library(testthat)
+library(sloop)
 
 
 # Create a test data directory with sample audio and XML files for testing
