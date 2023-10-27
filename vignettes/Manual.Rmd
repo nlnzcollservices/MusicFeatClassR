@@ -2,15 +2,13 @@
 title: "Manual"
 author: "Svetlana Koroteeva"
 date: "`r Sys.Date()`"
-output: 
+output:
   html_document:
-    path: "vignettes/Testing_plan.html"
+    path: vignettes/Testing_plan.html
   rmarkdown::html_vignette:
     fig_caption: yes
-vignette: >
-  %\VignetteIndexEntry{Manual}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
+  pdf_document: default
+vignette: "%\\VignetteIndexEntry{Manual} %\\VignetteEncoding{UTF-8} %\\VignetteEngine{knitr::rmarkdown}\n"
 ---
 
 ```{r setup, include = FALSE, warning = FALSE}
@@ -108,7 +106,9 @@ library(stringr)
 library(e1071)
 library(nnet)
 library(Rcpp)
+library(sloop)
 library(MusicFeatClassR)
+
 csv_file_name<-"extracted_features_original.csv"
 vignettes_dir<-getwd()
 parent_dir<-dirname(vignettes_dir)
@@ -154,6 +154,11 @@ classificationMetrics(result$confusion_matrix$table)
 
 You can learn more about parameters in the following functions/libraries documentation - randomForest, naiveBayes, svm (e1071 library), multinom (standard R library)
 
+Parameters for the classifiers should be passed as named list to the classifier_params variable.
+
+
+
+```{r}
 
 classifier_name <- "RandomForest"
 classifier_params <- list(
@@ -199,4 +204,24 @@ result <- train_classifier(feature_data, classif = classifier_name, classif_para
 
 result$accuracy
 
-```{R}
+```
+
+### Predict new music 
+
+The package contains my_predictor method, which allows to predict individual labels for individual based on music features and xml file via previously saved model. It returns bound dataframes containing identification number, title, audio file path and label code.
+
+The information about meaning of label codes you can find on Library of Congress web-site.
+
+https://www.loc.gov/marc/bibliographic/bd008m.html
+     
+
+```{r}
+
+my_target_folder <-list.dirs(filesdir)[2]
+my_target_folder
+my_model <- readRDS(model_path)
+results<-my_predictor(my_target_folder,my_model)
+results$label_code
+
+```
+
