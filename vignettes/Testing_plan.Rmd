@@ -38,7 +38,7 @@ root_dir<-dirname(current_dir)
 test_dir(file.path(root_dir,"tests"))
 ```
 
-This will execute all the tests. Note: there are could be warnings related to packages.
+This will execute all the tests. Note: there could be warnings related to packages.
 
 ## Interpreting the Results
 
