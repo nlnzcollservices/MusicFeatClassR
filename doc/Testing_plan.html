@@ -11,7 +11,7 @@
 
 <meta name="author" content="Svetlana Koroteeva" />
 
-<meta name="date" content="2023-10-21" />
+<meta name="date" content="2023-10-27" />
 
 <title>Testing plan</title>
 
@@ -164,7 +164,7 @@ pre code {
 
 <h1 class="title toc-ignore">Testing plan</h1>
 <h4 class="author">Svetlana Koroteeva</h4>
-<h4 class="date">2023-10-21</h4>
+<h4 class="date">2023-10-27</h4>
 
 </div>
 
@@ -198,19 +198,19 @@ test_dir(file.path(root_dir,&quot;tests&quot;))
 #&gt; 
 ⠏ |         0 | classifier                                                      
 ⠋ |         1 | classifier                                                      
-⠦ |         7 | classifier                                                      
-✔ |        10 | classifier [2.0s]
+⠇ |         9 | classifier                                                      
+✔ |        10 | classifier [1.7s]
 #&gt; 
 ⠏ |         0 | extract_audio_features                                          
 ⠋ |         1 | extract_audio_features                                          
-✔ |         9 | extract_audio_features [2.2s]
+✔ |         9 | extract_audio_features [2.4s]
 #&gt; 
 ⠏ |         0 | extraction_routine                                              [1] &quot;IE1005520&quot;
 #&gt; [1] &quot;IE1005520&quot;
 #&gt; [1] &quot;IE number&quot;
 #&gt; [1] &quot;REP74107552&quot;
-#&gt; [1] &quot;C:/Users/Korotesv/DATA501/MusicFeatClassR/tests/music/IE1005520/REP74107552/FL74107553_1294987_PM_S_2.mp3&quot;
-#&gt; [2] &quot;C:/Users/Korotesv/DATA501/MusicFeatClassR/tests/music/IE1005520/REP74107552/FL74107554_1294987_PM_S_1.mp3&quot;
+#&gt; [1] &quot;C:/Users/Korotesv/MusicFeatClassR/tests/music/IE1005520/REP74107552/FL74107553_1294987_PM_S_2.mp3&quot;
+#&gt; [2] &quot;C:/Users/Korotesv/MusicFeatClassR/tests/music/IE1005520/REP74107552/FL74107554_1294987_PM_S_1.mp3&quot;
 #&gt;    duration sample_rate num_channels amplitude
 #&gt; 1: 1017.624       48000     48845952     29338
 #&gt;    duration sample_rate num_channels amplitude
@@ -247,16 +247,41 @@ test_dir(file.path(root_dir,&quot;tests&quot;))
 #&gt; • `ie_number` -&gt; `ie_number...18`
 #&gt; 
 ⠋ |         1 | extraction_routine                                              
-✔ |         3 | extraction_routine [4.1s]
+✔ |         3 | extraction_routine [4.4s]
 #&gt; 
 ⠏ |         0 | metadata_extraction                                             
 ✔ |        18 | metadata_extraction
 #&gt; 
-#&gt; ══ Results ═════════════════════════════════════════════════════════════════════
-#&gt; Duration: 8.4 s
+⠏ |         0 | predict_new                                                     
+⠋ |   1     0 | predict_new                                                     
+✔ |   1     0 | predict_new
+#&gt; ────────────────────────────────────────────────────────────────────────────────
+#&gt; Warning (&#39;test_predict_new.R:11:1&#39;): (code run outside of `test_that()`)
+#&gt; `context()` was deprecated in the 3rd edition.
+#&gt; Backtrace:
+#&gt;     ▆
+#&gt;  1. └─testthat::context(&quot;my_predictor Tests&quot;) at test_predict_new.R:11:0
+#&gt;  2.   └─testthat:::edition_deprecate(3, &quot;context()&quot;)
+#&gt; ────────────────────────────────────────────────────────────────────────────────
 #&gt; 
-#&gt; [ FAIL 0 | WARN 0 | SKIP 0 | PASS 40 ]</code></pre>
-<p>This will execute all the tests. Note: there are could be warnings
+⠏ |         0 | my_predictor Tests                                              
+⠋ |   1     0 | my_predictor Tests                                              
+✔ |   1     8 | my_predictor Tests [4.2s]
+#&gt; ────────────────────────────────────────────────────────────────────────────────
+#&gt; Warning (&#39;test_predict_new.R:16:3&#39;): Test my_predictor with valid input
+#&gt; `expect_is()` was deprecated in the 3rd edition.
+#&gt; i Use `expect_type()`, `expect_s3_class()`, or `expect_s4_class()` instead
+#&gt; Backtrace:
+#&gt;     ▆
+#&gt;  1. └─testthat::expect_is(feature_data, &quot;data.frame&quot;) at test_predict_new.R:16:2
+#&gt;  2.   └─testthat:::edition_deprecate(3, &quot;expect_is()&quot;, &quot;Use `expect_type()`, `expect_s3_class()`, or `expect_s4_class()` instead&quot;)
+#&gt; ────────────────────────────────────────────────────────────────────────────────
+#&gt; 
+#&gt; ══ Results ═════════════════════════════════════════════════════════════════════
+#&gt; Duration: 13.2 s
+#&gt; 
+#&gt; [ FAIL 0 | WARN 2 | SKIP 0 | PASS 48 ]</code></pre>
+<p>This will execute all the tests. Note: there could be warnings
 related to packages.</p>
 </div>
 <div id="interpreting-the-results" class="section level2">
@@ -271,6 +296,13 @@ results, which tests are passed and failed.</p>
 <div id="continuous-integration" class="section level2">
 <h2>Continuous Integration</h2>
 <p>Run the tests whenever changes are made for the package.</p>
+<p>—Under construction—</p>
+</div>
+<div id="continuos-integration-with-github" class="section level2">
+<h2>Continuos Integration with GitHub</h2>
+<p>Workflow is set for GitHub CI. Workflows folder contains “main.yaml”
+pipeline which checks all commits. However, there is still some issues
+with the pipeline integration to github.</p>
 </div>
 </div>
 
