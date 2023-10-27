@@ -52,3 +52,11 @@ New tests could be placed in "tests" folder.
 
 Run the tests whenever changes are made for the package.
 
+---Under construction---
+
+## Continuos Integration with GitHub
+
+Workflow is set for GitHub CI. Workflows folder contains "main.yaml" pipeline which checks all commits. However, there is still some issues with the pipeline integration to github.
+
+
+
