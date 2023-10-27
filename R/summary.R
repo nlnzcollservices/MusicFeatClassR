@@ -12,10 +12,6 @@
 #' @keywords data
 summary.rpipeline <- function(object, ...) {
   cat("Summary of rpipeline object\n")
-  cat("Label File Path:", object$label_file_path, "\n")
-  cat("CSV File Path:", object$csv_file_path, "\n")
-  cat("Root Directory:", object$root_dir, "\n")
-  cat("Feature Data Summary:\n")
   print(summary(object$feature_data))
   cat("\n")
   invisible()

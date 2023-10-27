@@ -3,12 +3,12 @@ title: "Manual"
 author: "Svetlana Koroteeva"
 date: "`r Sys.Date()`"
 output:
-  html_document:
-    path: vignettes/Testing_plan.html
   rmarkdown::html_vignette:
     fig_caption: yes
-  pdf_document: default
-vignette: "%\\VignetteIndexEntry{Manual} %\\VignetteEncoding{UTF-8} %\\VignetteEngine{knitr::rmarkdown}\n"
+vignette: >
+  %\VignetteIndexEntry{Manual}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r setup, include = FALSE, warning = FALSE}
@@ -66,12 +66,11 @@ Now you can initiate the pipeline. The entire process may take a couple of hours
 
 ```{r}
 mydata<-rpipeline(label_file_path, csv_file_path, filesdir)
-head(mydata)
 
 ```
 For the purpose of data analysis, three S3 class methods for 'rpipeline' were developed: 'print,' 'summary,' and 'plot.'
 
-Currently, they are in a 'draft' stage and will be further developed for the complete package. (Note: To test the 'plot' S3 method, you need to load the 'plot.rpipeline' function into memory first, as it may not work well within the package.)
+Print method outputs original paths.
 
 ```{r}
 
@@ -79,12 +78,16 @@ print(mydata)
 
 ```
 
+Prints custom summary.
+
 ```{r}
 
 summary(mydata)
 
 ```
-Note: Currently "plot" does not load correctly, so I copied the script here
+
+Custom plot displays a correlation matrix form output data.
+
 ```{r}
 
 plot(mydata)
@@ -98,6 +101,7 @@ Once you have collected all the features from your dataset, you can proceed to t
 In addition to Random Forest, which is considered one of the best classifiers, the package also includes Naive Bayes, Support Vector Machine, and Logistic Regression methods. You can call the specific method by replacing "RandomForest" with "LogisticRegression," "NaiveBayes," or "SupportVectorMachine."
 
 To initiate the classification process, you can use the "classify.R" code from the "inst/scripts" directory or copy it from the code snippets.
+
 ```{r, message = FALSE, warning=FALSE}
 library(randomForest)
 library(caret)
@@ -122,15 +126,13 @@ saveRDS(result$trained_model, file = model_path)
 
 ```
 
-Class result also has print and summary methods
-```{r}
+The package contains custom results summary function.
 
-print(result)
-
-```
 ```{r}
 summary(result)
 ```
+
+It also has a custom plot function.
 
 ```{r}
 
@@ -206,9 +208,9 @@ result$accuracy
 
 ```
 
-### Predict new music 
+### Predict label for new music dataset
 
-The package contains my_predictor method, which allows to predict individual labels for individual based on music features and xml file via previously saved model. It returns bound dataframes containing identification number, title, audio file path and label code.
+The package contains my_predictor method, which allows to predict labels for for a new information package using previously saved trained model. It returns bound dataframes containing identification number, title, audio file path and label code for each music file.
 
 The information about meaning of label codes you can find on Library of Congress web-site.
 
